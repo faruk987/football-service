@@ -49,7 +49,7 @@ jobs:
     - name: Push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: farukaydin7/s6
+        image: farukaydin7/football-service
         registry: docker.io
         dockerfile: src/main/docker/Dockerfile.jvm
         username: ${{ secrets.DOCKER_USERNAME }}
