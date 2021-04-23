@@ -20,6 +20,7 @@ import java.util.List;
 
 @Path("/teams")
 public class TeamController {
+    
     private JSONObject apidata = getTeamsFromApi();
     private List<Team> teams = jsonToTeamList(apidata.getJSONArray("teams"));
 
