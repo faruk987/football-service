@@ -37,7 +37,7 @@ public class MatchController {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Path("/{id}")
-    public String getTeamById(@PathParam int id) throws Exception {
+    public String getMatchById(@PathParam int id) throws Exception {
         try {
             String json = "";
 
