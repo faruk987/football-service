@@ -125,6 +125,9 @@
       </build>
       <properties>
         <quarkus.package.type>native</quarkus.package.type>
+        <sonar.projectKey>faruk987_football-service</sonar.projectKey>
+        <sonar.organization>faruk987</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>  
       </properties>
     </profile>
   </profiles>
