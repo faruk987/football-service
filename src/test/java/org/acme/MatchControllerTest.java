@@ -3,6 +3,8 @@ package org.acme;
 import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
+import javax.ws.rs.core.Response;
+
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,9 +22,9 @@ class MatchControllerTest {
 
     @Test
     void getMatchById() {
-        String uuid = "1038936";
+        String id = "1038936";
         given()
-                .pathParam("id", uuid)
+                .pathParam("id", id)
                 .when().get("/matches/{id}")
                 .then()
                 .statusCode(200);
