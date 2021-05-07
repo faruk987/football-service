@@ -1,6 +1,6 @@
 package org.acme.models;
 
-public class Match {
+public class Match implements Comparable<Match>{
     private int id;
     private String homeTeam;
     private String awayTeam;
@@ -63,5 +63,10 @@ public class Match {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    @Override
+    public int compareTo(Match match) {
+        return this.time.compareTo(match.getTime());
     }
 }

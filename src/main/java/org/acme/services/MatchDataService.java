@@ -10,6 +10,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @ApplicationScoped
@@ -53,6 +54,8 @@ public class MatchDataService {
                     jsonObject.getString("dateEvent")
             ));
         }
+
+        Collections.sort(result);
         return result;
     }
 }

@@ -9,6 +9,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import io.quarkus.cache.CacheResult;
@@ -21,7 +22,7 @@ public class TeamDataService {
 
     @CacheResult(cacheName = "teams-cache")
     public List<Team> getTeamList() throws Exception {
-        return jsonToTeamList(getTeamsFromApi().getJSONArray("teams"));
+        return jsonToTeamList(getTeamsFromApi().getJSONArray("table"));
     }
 
     public Team getTeamById(int id) throws Exception {
@@ -34,7 +35,7 @@ public class TeamDataService {
     }
 
     private JSONObject getTeamsFromApi() throws Exception {
-        URL url = new URL("https://www.thesportsdb.com/api/v1/json/1/search_all_teams.php?l=Dutch%20Eredivisie");
+        URL url = new URL("https://www.thesportsdb.com/api/v1/json/1/lookuptable.php?l=4337&s=2020-2021");
 
         return service.getObjectFromApi(url);
     }
@@ -45,12 +46,13 @@ public class TeamDataService {
             JSONObject jsonObject = values.getJSONObject(i);
             result.add(new Team(
                     jsonObject.getInt("idTeam"),
+                    jsonObject.getInt("intRank"),
                     jsonObject.getString("strTeam"),
-                    jsonObject.getString("strStadium"),
-                    jsonObject.getString("strDescriptionEN"),
+                    jsonObject.getString("strForm"),
                     jsonObject.getString("strTeamBadge")
             ));
         }
+        Collections.sort(result);
         return result;
     }
 }
