@@ -4,14 +4,14 @@ public class Team implements Comparable<Team>{
     private int id;
     private int rank;
     private String name;
-    private String form;
+    private String[] form;
     private String image;
 
     public Team(int id, int rank, String name, String form, String image) {
         this.id = id;
         this.rank = rank;
         this.name = name;
-        this.form = form;
+        this.form = form.split("(?!^)");
         this.image = image;
     }
 
@@ -36,11 +36,11 @@ public class Team implements Comparable<Team>{
         this.name = name;
     }
 
-    public String getform() {
+    public String[] getform() {
         return form;
     }
     public void setform(String form) {
-        this.form = form;
+        this.form = form.split("(?!^)");
     }
 
     public String getImage() {

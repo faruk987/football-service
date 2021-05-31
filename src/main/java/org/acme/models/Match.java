@@ -1,20 +1,32 @@
 package org.acme.models;
 
+import org.decimal4j.util.DoubleRounder;
+
+import java.util.Random;
+
 public class Match implements Comparable<Match>{
+    private final double MIN_QUOTATION = 1.20;
+    private final double MAX_QUOTATION = 3;
+
     private int id;
     private String homeTeam;
     private String awayTeam;
     private String league;
     private String time;
     private String date;
+    private double quotation;
 
     public Match(int id, String homeTeam, String awayTeam, String league, String time, String date) {
+        Random rnd = new Random();
+        double random = MIN_QUOTATION + (MAX_QUOTATION - MIN_QUOTATION) * rnd.nextDouble();
+
         this.id = id;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.league = league;
         this.time = time;
         this.date = date;
+        this.quotation = DoubleRounder.round(random,2);
     }
 
     public int getId() {
