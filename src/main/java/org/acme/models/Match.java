@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Match implements Comparable<Match>{
     private final double MIN_QUOTATION = 1.20;
-    private final double MAX_QUOTATION = 3;
+    private final double MAX_QUOTATION = 3.20;
 
     private int id;
     private String homeTeam;
@@ -75,6 +75,10 @@ public class Match implements Comparable<Match>{
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public double getQuotation() {
+        return quotation;
     }
 
     @Override
