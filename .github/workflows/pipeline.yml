@@ -34,7 +34,6 @@ jobs:
       run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
 
   docker:
-  
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -54,3 +53,14 @@ jobs:
         dockerfile: src/main/docker/Dockerfile.jvm
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}  
+  
+  deploy:
+    needs: docker
+    runs-on: ubuntu-latest
+    steps:
+    - name: Create and expose app
+      uses: redhat-actions/oc-new-app@v1
+      with:
+        app_name: football-service-app
+        image: docker.io/farukaydin7/football-service:latest
+        namespace: github-actions-football
