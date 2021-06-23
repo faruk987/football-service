@@ -72,5 +72,6 @@ jobs:
       uses: redhat-actions/oc-new-app@v1
       with:
         app_name: football-service-app
-        image: docker.io/farukaydin7/football-service:latest
+        registry: docker.io
+        image: farukaydin7/football-service:latest
         namespace: aydinfaruk75-dev
