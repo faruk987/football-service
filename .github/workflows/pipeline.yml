@@ -58,6 +58,16 @@ jobs:
     needs: docker
     runs-on: ubuntu-latest
     steps:
+    - name: OpenShift login
+      uses: redhat-actions/oc-login@v1
+      with:
+        openshift_server_url: ${{ secrets.OPENSHIFT_URL }}
+        openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
+        # openshift_username:
+        # openshift_password:
+        insecure_skip_tls_verify: true
+        namespace: aydinfaruk75-dev
+    
     - name: Create and expose app
       uses: redhat-actions/oc-new-app@v1
       with:
